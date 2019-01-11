@@ -1,4 +1,4 @@
-![Automation Scripts](logo-from-undraw--thank-you.svg)
+![Automation Scripts](logo-from-undraw--thank-you.png)
 
 Automation Scripts for Developers and Makers
 ======
