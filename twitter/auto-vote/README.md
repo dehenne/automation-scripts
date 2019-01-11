@@ -15,3 +15,4 @@ Installation
 
 - `php comphser.phar update`
 - Fill in the `config.php`
+- Run the script `php run.php`
