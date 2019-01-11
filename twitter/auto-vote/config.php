@@ -4,7 +4,7 @@
  * Twitter accounts configuration
  */
 
-$users = ['de_henne', 'makerweekly', 'makermag', 'getMakerLog']; // list of users
+$users = ['de_henne', 'makerweekly', 'makermag', 'getMakerLog', 'makersup']; // list of users
 
 /**
  * Twitter APP configuration
