@@ -15,3 +15,21 @@ Structure
 
 ### How-To Folder
 
+The How To Folder owns explanations which explain the basic things.
+
+Most developers should take these things for granted. 
+However, if you don't know how to register a Twitter app or use Composer, 
+I've written some short instructions to help you out here.
+
+### Automatism folders
+
+The following folders contain scripts that make your maker's life a little bit easier
+
+- twitter
+
+
+Licence
+------
+
+The whole repo and the information contained therein are freely usable 
+and are licensed under the MIT license.
