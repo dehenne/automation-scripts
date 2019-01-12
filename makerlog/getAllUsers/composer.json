@@ -1,6 +1,6 @@
 {
   "name": "automation-scripts",
-  "description": "This repo shows which automatisms are easily possible with Twitter, \nMakerlog and other services. Automate your life.",
+  "description": "This is part of https://github.com/dehenne/automation-scripts",
   "version": "dev-master",
   "license": "MIT",
   "authors": [
@@ -12,7 +12,6 @@
   ],
   "require": {
     "ext-json": "*",
-    "dg/twitter-php": "*",
     "guzzlehttp/guzzle": "6.*"
   }
 }
