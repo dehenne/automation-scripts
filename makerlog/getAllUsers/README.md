@@ -1,8 +1,18 @@
 Makerlog Socialnetwork Handles
 ======
 
-this repo shows how you can read all users from makerlog. 
-so that you can see how to read the single handles (social network entry), i created a separate file for each handle.
+This repo shows how you can read all users from makerlog. 
+so that you can see how to read the single handles (social network entry), I created a separate file for each handle.
+
+What can you do with it?
+------
+
+These scripts are the basis for some more automatisms. 
+For example you can inform yourself when there are new users in Makerlog.
+
+> Example:
+> You can get informed when a new Makerlog user with a Twitter handle registered and add it to a Twitter list.
+
 
 Usage
 ------
@@ -34,15 +44,6 @@ List all makerlog users with a github user entry:
 php producthunt-usernames.php
 
 ```
-
-What can you do with it?
-------
-
-These scripts are the basis for some more automatisms. 
-For example you can inform yourself when there are new users in Makerlog.
-
-You can get informed when a new Makerlog user with a Twitter handle registered and add it to a Twitter list.
-
 
 Basic
 ------
