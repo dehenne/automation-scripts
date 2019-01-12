@@ -1,13 +1,13 @@
 Makerlog Socialnetwork Handles
 ======
 
-This repo shows how you can read all users from makerlog. 
-so that you can see how to read the single handles (social network entry), I created a separate file for each handle.
+This repo shows how you can read all users from makerlog, 
+it is now possible for you to read individual information about each user.
 
 What can you do with it?
 ------
 
-These scripts are the basis for some more automatisms. 
+I created a separate files for each social handle., these scripts can be the basis for some more automatisms. 
 For example you can inform yourself when there are new users in Makerlog.
 
 > Example:
