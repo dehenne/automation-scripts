@@ -49,6 +49,14 @@ The following folders contain scripts that make your maker's life a little bit e
 - makerlog
 
 
+### Maintenance of this Repository
+
+This repo is mainly maintained by [de_henne](https://twitter.com/de_henne).
+However, I am always thankful and open for ideas and help.
+
+Pull requests are welcome!
+
+
 Licence
 ------
 
