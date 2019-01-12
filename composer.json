@@ -12,6 +12,8 @@
   ],
   "require": {
     "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-iconv": "*",
     "dg/twitter-php": "*",
     "guzzlehttp/guzzle": "6.*"
   }
