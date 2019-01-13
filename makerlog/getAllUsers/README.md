@@ -1,7 +1,7 @@
 Makerlog Socialnetwork Handles
 ======
 
-This repo shows how you can read all users from makerlog, 
+This folder shows how you can read all users from makerlog, 
 it is now possible for you to read individual information about each user.
 
 What can you do with it?
