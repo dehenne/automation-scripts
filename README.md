@@ -45,9 +45,9 @@ I've written some short instructions to help you out here.
 
 The following folders contain scripts that make your maker's life a little bit easier
 
-- twitter
 - makerlog
-
+- steem
+- twitter
 
 ### Maintenance of this Repository
 
