@@ -1,7 +1,7 @@
 // config
 
 // which users should be voted
-let USERS = ['utopian-io', 'utopian.tasks', 'jedigeiss'];
+let USERS = ['pcsg-dev', 'utopian-io', 'utopian.tasks'];
 
 // Weighting of votes
 const WEIGHT = 10000;
