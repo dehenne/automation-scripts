@@ -23,6 +23,8 @@ const USERNAME      = conf.username;
 const PASSWORD      = conf.password;
 const PRIVATE_KEY   = DSteem.PrivateKey.fromLogin(USERNAME, PASSWORD, 'posting');
 
+const DEBUG = false;
+
 /**
  * Return the 5 newest posts from an user
  *
@@ -42,13 +44,17 @@ function getUserPosts(username) {
                 return;
             }
 
-            console.log('');
-            console.log('Fetched from ' + username + ':');
+            if (DEBUG) {
+                console.log('');
+                console.log('Fetched from ' + username + ':');
+            }
 
             let posts = [];
 
             for (let i = 0, len = result.length; i < len; i++) {
                 let post = result[i];
+
+                if (DEBUG) console.log('- ' + post.permlink);
 
                 // only posts which are older than 15min
                 let Created  = new Date(post.created);
@@ -60,17 +66,21 @@ function getUserPosts(username) {
                     continue;
                 }
 
-                // older than 5 days, don't vote
+                if (DEBUG) console.log('-> older than 15 min');
+
+                // younger than 5 days, don't vote
                 if ((new Date() - Created) > fiveDays) {
                     continue;
                 }
+
+                if (DEBUG) console.warn('-> younger than 5 days');
 
                 // only posts which are not voted
                 if (isAlreadyVoted(post.active_votes)) {
                     continue;
                 }
 
-                console.log('- ' + post.permlink);
+                if (DEBUG) console.log('-> not voted');
 
                 posts.push({
                     title   : post.title,
@@ -118,7 +128,11 @@ function voteOnPost(author, permlink) {
 
 function isAlreadyVoted(votes) {
     for (let i = 0, len = votes.length; i < len; i++) {
-        if (votes[i].voter === USERNAME) {
+        if (votes[i].voter !== USERNAME) {
+            continue;
+        }
+
+        if (parseInt(votes[i].percent) === parseInt(CONFIG_WEIGHT)) {
             return true;
         }
     }
