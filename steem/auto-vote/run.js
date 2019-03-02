@@ -10,6 +10,8 @@
 
  */
 
+'use strict';
+
 const DSteem = require('dsteem');
 const Client = DSteem.Client;
 const Steem  = new Client('https://api.steemit.com');
@@ -28,7 +30,8 @@ const DEBUG = false;
 /**
  * Return the 5 newest posts from an user
  *
- * @param username
+ * @param {String} username
+ * @return {Promise}
  */
 function getUserPosts(username) {
     process.stdout.write('Start fetching from ' + username + "\n");
@@ -105,24 +108,32 @@ function getUserPosts(username) {
  *
  * @param author
  * @param permlink
+ *
+ * @return {Promise}
  */
-function voteOnPost(author, permlink) {
+async function voteOnPost(author, permlink) {
     process.stdout.write('Execute Vote at @' + author + ' - ' + permlink);
 
-    return Steem.broadcast.vote({
-        voter   : USERNAME,
-        author  : author,
-        permlink: permlink,
-        weight  : CONFIG_WEIGHT
-    }, PRIVATE_KEY).then(function () {
-        process.stdout.write(' ✔️');
-        process.stdout.write("\n");
-    }, function (error) {
-        process.stdout.write(' ❌️');
-        process.stdout.write("\n");
-        //if (error.code !== 10) {
-        //console.log('error:', error);
-        //}
+    return new Promise(function (resolve) {
+        Steem.broadcast.vote({
+            voter   : USERNAME,
+            author  : author,
+            permlink: permlink,
+            weight  : CONFIG_WEIGHT
+        }, PRIVATE_KEY).then(function () {
+            process.stdout.write(' ✔️');
+            process.stdout.write("\n");
+
+            resolve();
+        }, function (error) {
+            process.stdout.write(' ❌️');
+            process.stdout.write("\n");
+            //if (error.code !== 10) {
+            //console.log('error:', error);
+            //}
+
+            resolve();
+        });
     });
 }
 
@@ -145,28 +156,37 @@ function isAlreadyVoted(votes) {
  *
  * @param posts
  */
-function processPosts(posts) {
+async function processPosts(posts) {
     if (!posts.length) {
         return;
     }
 
     let post = posts.shift();
 
-    voteOnPost(post.author, post.permlink).then(function () {
-        if (posts.length) {
-            processPosts(posts);
-        }
-    });
+    await voteOnPost(post.author, post.permlink);
+
+    if (posts.length) {
+        return processPosts(posts);
+    }
 }
 
-
 // run
+process.stdout.write('Run Steem Autovoter ' + new Date().toString() + "\n");
+
 let promises = [];
 
 for (let i = 0, len = USERS.length; i < len; i++) {
     promises.push(getUserPosts(USERS[i]));
 }
 
-Promise.all(promises).then(function (posts) {
-    processPosts(posts.flat());
-});
+// we need async for the cron, because cron needs to wait
+(async function main() {
+    let posts = await Promise.all(promises);
+    posts     = [].concat.apply([], posts); // merge posts from all accounts
+
+    console.log('Found ' + posts.length + ' posts to vote');
+
+    await processPosts(posts);
+    console.log("Done :-)\n");
+})();
+
