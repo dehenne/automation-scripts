@@ -52,7 +52,9 @@ function getUserPosts(username) {
                 console.log('Fetched from ' + username + ':');
             }
 
-            let posts = [];
+            let posts   = [];
+            let Now     = new Date();
+            let NOW_GMT = new Date(Now.valueOf() + Now.getTimezoneOffset() * 60000);
 
             for (let i = 0, len = result.length; i < len; i++) {
                 let post = result[i];
@@ -65,14 +67,14 @@ function getUserPosts(username) {
                 let fiveDays = 60 * 60 * 1000 * 24 * 5;
 
                 // younger than 15minutes, don't vote
-                if (((new Date) - Created) < fiftyMin) {
+                if (NOW_GMT - Created < fiftyMin) {
                     continue;
                 }
 
                 if (DEBUG) console.log('-> older than 15 min');
 
                 // younger than 5 days, don't vote
-                if ((new Date() - Created) > fiveDays) {
+                if (NOW_GMT - Created > fiveDays) {
                     continue;
                 }
 
