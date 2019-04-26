@@ -1,0 +1,17 @@
+{
+  "name": "automation-scripts",
+  "description": "This is part of https://github.com/dehenne/automation-scripts",
+  "version": "dev-master",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Henning Leutz",
+      "homepage": "http://www.pcsg.de",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "ext-json": "*",
+    "dg/twitter-php": "*"
+  }
+}
