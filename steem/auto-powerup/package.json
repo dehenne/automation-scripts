@@ -1,0 +1,10 @@
+{
+  "name": "steemit-autovote",
+  "version": "1.0.0",
+  "description": "STEEMIT Auto Redeem Script",
+  "main": "bot.js",
+  "author": "@dehenne",
+  "dependencies": {
+    "dsteem": "^0.10.1"
+  }
+}
