@@ -1,7 +1,7 @@
 {
-  "name": "steemit-autovote",
+  "name": "steemit-autopowerup",
   "version": "1.0.0",
-  "description": "STEEMIT Auto Redeem Script",
+  "description": "STEEMIT Auto PowerUp Script",
   "main": "bot.js",
   "author": "@dehenne",
   "dependencies": {
